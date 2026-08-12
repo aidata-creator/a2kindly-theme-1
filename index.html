@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO & Canonical -->
+  <title>Kindly — Human-in-the-Loop Data Operations & Managed BPO in Manila</title>
+  <meta name="description" content="Scale your data operations without adding internal management overhead. Dedicated Manila pods for RLHF, labeling, moderation, and back-office BPO.">
+  <link rel="canonical" href="https://kindly.global">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kindly.global">
+  <meta property="og:title" content="Kindly — Human-in-the-Loop Data Operations in Manila">
+  <meta property="og:description" content="Scale your data operations without adding internal management overhead. Built by social enterprise pioneers Mark Ruiz & Reese Fernandez-Ruiz.">
+  <meta property="og:image" content="https://kindly.global/og-image.png">
+
+  <!-- X (Twitter) Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://kindly.global">
+  <meta name="twitter:title" content="Kindly — Human-in-the-Loop Data Operations in Manila">
+  <meta name="twitter:description" content="Scale your data operations without adding internal management overhead. Managed Manila teams for RLHF, annotation, and QA.">
+  <meta name="twitter:image" content="https://kindly.global/og-image.png">
+
+  <!-- Schema.org JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["Organization", "LocalBusiness"],
+        "@id": "https://kindly.global/#organization",
+        "name": "Kindly",
+        "url": "https://kindly.global",
+        "logo": "https://kindly.global/logo.png",
+        "description": "Enterprise AI Data Operations & Managed BPO in Manila, Philippines.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Manila",
+          "addressCountry": "PH"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/company/kindly-ai"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do you guarantee quality with a human-in-the-loop approach?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Every unit passes multi-layer QA: gold-standard calibration tasks, double-blind auditing catching 99.8% of errors, and dedicated QA analysts."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How fast can you ramp up a team for our account?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We deploy custom data or moderation pods in 2 to 3 weeks through our trained talent pool in Manila."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Typography: Inter & Instrument Serif -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Brand Color Palette */
+      --color-mustard: #EF9F27;        /* Predominant Warm Gold/Mustard */
+      --color-primary-dark: #085041;   /* Dark Emerald/Forest Green */
+      --color-primary-green: #1D9E75;  /* Vibrant Emerald Green */
+      --color-charcoal: #2C2C2A;       /* Off-Black / Charcoal Text */
+
+      /* Surface & UI Colors */
+      --bg-surface: #FFFFFF;
+      --bg-warm: #FFFBF5;              /* Subtle warm background tint matching mustard */
+      --bg-subtle: #F3ECE1;
+      --border-color: #E2D8C8;
+      
+      --text-main: #2C2C2A;
+      --text-muted: #58605C;
+      --badge-bg: #FDF3E3;             /* Warm mustard tint for badges */
+      --radius: 8px;
+      
+      /* Updated to Inter Font */
+      --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-serif: 'Instrument Serif', Georgia, serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--bg-surface);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Sticky Nav Header */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 90px;
+    }
+    
+    /* Updated Logo Styling with Inter and Exact Dot Placement */
+    .brand-logo {
+      display: inline-flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: #000000;
+      user-select: none;
+    }
+    .brand-logo-text {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: 3.2rem;
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      color: #000000;
+      display: flex;
+      align-items: baseline;
+    }
+    .brand-logo-i {
+      position: relative;
+      display: inline-block;
+    }
+    .brand-logo-dot {
+      position: absolute;
+      top: -0.25em; 
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0.26em;
+      height: 0.26em;
+      background-color: var(--color-primary-green);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .brand-logo-tagline {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: #000000;
+      margin-top: 0.35rem;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--color-primary-dark); }
+
+    /* Mobile Menu Toggle Button */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: var(--color-primary-dark);
+      cursor: pointer;
+      padding: 0.25rem 0.5rem;
+    }
+
+    /* Mobile Nav Drawer Container */
+    .mobile-nav-drawer {
+      display: none;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 1.5rem;
+    }
+    .mobile-nav-drawer.open {
+      display: block;
+    }
+    .mobile-nav-drawer ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .mobile-nav-drawer a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.05rem;
+      display: block;
+    }
+
+    /* Buttons Updated to Mustard Primary */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-mustard);
+      color: #2C2C2A;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: 2px solid var(--color-mustard);
+      transition: all 0.2s ease;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn:hover { 
+      background: #E0901B;
+      border-color: #E0901B;
+      color: #FFFFFF;
+    }
+    .btn-secondary {
+      background: var(--bg-surface);
+      color: var(--text-main);
+      border: 2px solid var(--border-color);
+    }
+    .btn-secondary:hover { 
+      background: var(--bg-warm);
+      border-color: var(--color-mustard);
+    }
+
+    /* Section Structure & Header Scroll Margins */
+    section {
+      padding: 90px 0;
+      scroll-margin-top: 90px;
+    }
+    #overview, #services, #how-we-work, #pricing, #story, #team, #quiz, #book {
+      scroll-margin-top: 90px;
+    }
+
+    section.bg-warm {
+      background-color: var(--bg-warm);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+    section.bg-surface {
+      background-color: var(--bg-surface);
+    }
+
+    .section-header { margin-bottom: 2.5rem; max-width: 720px; }
+    .section-header h2 {
+      font-size: 2.35rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--color-primary-dark);
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+    .section-header h2 em {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--color-mustard);
+    }
+    .section-header p { color: var(--text-muted); font-size: 1.1rem; font-weight: 500; }
+
+    /* Hero Section */
+    .hero {
+      padding-top: 40px;
+      padding-bottom: 30px;
+      max-width: 860px;
+    }
+    .hero-origin-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--badge-bg);
+      border: 1px solid var(--border-color);
+      padding: 0.45rem 1rem;
+      border-radius: 20px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--color-primary-dark);
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      line-height: 1.12;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      color: var(--text-main);
+    }
+    .hero h1 em { 
+      font-style: italic;
+      font-family: var(--font-serif);
+      font-weight: 400;
+      color: var(--color-mustard);
+    }
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+
+    /* Artifact Preview Card */
+    .artifact-card {
+      background: var(--bg-surface);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-top: 2rem;
+      box-shadow: 0 6px 16px rgba(8, 80, 65, 0.05);
+    }
+    .artifact-header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.75rem;
+      margin-bottom: 1rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    .artifact-video-container {
+      width: 100%;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #000;
+      border: 1px solid var(--border-color);
+      aspect-ratio: 16 / 9;
+    }
+    .artifact-video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Trust & Accessibility Badges */
+    .trust-bar {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      margin-top: 3rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .trust-item { font-size: 0.9rem; color: var(--text-muted); }
+    .trust-item strong { color: var(--text-main); font-weight: 700; }
+
+    .compliance-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background-color: var(--badge-bg);
+      border: 1px solid rgba(239, 159, 39, 0.3);
+      padding: 0.35rem 0.85rem;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-primary-dark);
+    }
+    .compliance-badge .check-icon {
+      color: var(--color-mustard);
+      font-weight: 900;
+    }
+
+    /* Service Cards */
+    .service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .service-card {
+      background: var(--bg-surface);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 2.25rem;
+    }
+    .service-card h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--color-primary-dark);
+      margin-bottom: 0.75rem;
+    }
+    .service-card p { color: var(--text-muted); margin-bottom: 1.25rem; font-size: 1rem; }
+    .bullet-list { list-style: none; }
+    .bullet-list li {
+      position: relative;
+      padding-left: 1.25rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-main);
+    }
+    .bullet-list li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--color-mustard);
+      font-weight: 800;
+    }
+
+    /* How We Work Moving Numbers Grid */
+    .speed-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .speed-card {
+      background: var(--bg-surface);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+    }
+    .speed-card h3 {
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--color-mustard);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+    .speed-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    /* How We Work Concept Cards Grid */
+    .hww-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .hww-card {
+      background: var(--bg-surface);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+    .hww-card h3 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--color-primary-dark);
+      margin-bottom: 0.75rem;
+    }
+    .hww-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Metrics Grid */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      background: var(--bg-surface);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+    .metric-box h4 {
+      font-size: 2.5rem;
+      color: var(--color-mustard);
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+    .metric-box p { font-size: 0.95rem; font-weight: 600; color: var(--text-muted); }
+
+    /* Transparent Pricing */
+    .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .pricing-card {
+      background: var(--bg-surface);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 2.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .pricing-price {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--color-primary-dark);
+      margin-top: 1.5rem;
+    }
+
+    /* Embedded Founder Quotes inside Our Story */
+    .story-quotes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .story-quote-card {
+      background: var(--bg-surface);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .story-quote-text {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      line-height: 1.5;
+      font-style: italic;
+      color: var(--color-primary-dark);
+      margin-bottom: 1.25rem;
+    }
+    .story-quote-author {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      border-top: 1px solid var(--border-color);
+      padding-top: 0.85rem;
+    }
+    .story-quote-avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--color-mustard);
+    }
+    .story-quote-info h4 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+    .story-quote-info p {
+      font-size: 0.8rem;
+      color: var(--color-primary-dark);
+      font-weight: 700;
+    }
+
+    /* Human in the Loop Team Grid */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.25rem;
+    }
+    .team-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 1.5rem 1rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .team-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 2px solid var(--color-mustard);
+      box-shadow: 0 0 0 3px rgba(239, 159, 39, 0.15);
+    }
+    .team-card h4 { font-size: 1.1rem; font-weight: 800; color: var(--text-main); }
+    .team-card .role { font-size: 0.85rem; color: var(--color-primary-dark); margin-bottom: 0.75rem; font-weight: 700; }
+    .team-card .desc { font-size: 0.825rem; color: var(--text-muted); line-height: 1.4; margin-top: auto; }
+
+    .industries-section {
+      background-color: var(--bg-surface);
+      padding: 60px 0;
+      text-align: center;
+    }
+    .industry-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+    .industry-badges .badge {
+      background-color: var(--badge-bg);
+      color: var(--color-primary-dark);
+      border: 1px solid rgba(239, 159, 39, 0.3);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    /* Dynamic AI Audit Section Styles */
+    .quiz-section {
+      background-color: var(--bg-surface);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      padding: 90px 0;
+      scroll-margin-top: 90px;
+    }
+    .section-title {
+      max-width: 720px;
+      margin: 0 auto 2.5rem;
+      text-align: center;
+    }
+    .section-title h2 {
+      font-size: 2.35rem;
+      font-weight: 800;
+      color: var(--color-primary-dark);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    .section-title p {
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-primary-dark);
+    }
+    .quiz-container {
+      max-width: 760px;
+      margin: 0 auto;
+      background: var(--bg-warm);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      box-shadow: 0 6px 16px rgba(8, 80, 65, 0.05);
+    }
+    .quiz-progress {
+      width: 100%;
+      height: 6px;
+      background: var(--bg-subtle);
+      border-radius: 3px;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+    .quiz-progress-bar {
+      width: 33.33%;
+      height: 100%;
+      background: var(--color-mustard);
+      transition: width 0.3s ease;
+    }
+    .quiz-step {
+      display: none;
+    }
+    .quiz-step.active {
+      display: block;
+    }
+    .quiz-step h4 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--color-primary-dark);
+      margin-bottom: 1.5rem;
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .quiz-option-btn {
+      text-align: left;
+      background: var(--bg-surface);
+      border: 2px solid var(--border-color);
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: var(--font-main);
+    }
+    .quiz-option-btn:hover {
+      border-color: var(--color-mustard);
+      background: var(--bg-warm);
+      color: var(--color-primary-dark);
+    }
+    .quiz-result-card h4 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-primary-dark);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .audit-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .audit-stat-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 1.25rem 1rem;
+      text-align: center;
+    }
+    .stat-val {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--color-mustard);
+      line-height: 1.1;
+      margin-bottom: 0.35rem;
+      transition: all 0.2s ease-in-out;
+    }
+    .stat-lbl {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    #auditDetails {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .audit-bullets {
+      list-style: none;
+      margin-bottom: 2rem;
+      padding-left: 0;
+    }
+    .audit-bullets li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+    .audit-bullets li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--color-mustard);
+      font-weight: 900;
+    }
+
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 3.5rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      background-color: var(--bg-surface);
+    }
+
+    @media (max-width: 1024px) {
+      .team-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .nav-wrapper {
+        height: 70px;
+      }
+      .brand-logo-text {
+        font-size: 2.1rem;
+      }
+      .brand-logo-tagline {
+        font-size: 0.72rem;
+        margin-top: 0.15rem;
+      }
+      .nav-links { display: none; }
+      .mobile-menu-toggle { display: block; }
+
+      .header-btn {
+        padding: 0.5rem 0.85rem;
+        font-size: 0.825rem;
+      }
+
+      .hero h1 { font-size: 2.3rem; }
+      .service-grid, .pricing-grid, .metrics-grid, .speed-grid, .team-grid, .story-quotes-grid, .audit-stats-grid { grid-template-columns: 1fr; }
+      
+      section, #overview, #services, #how-we-work, #pricing, #story, #team, #quiz, #book { 
+        padding: 50px 0; 
+        scroll-margin-top: 70px; 
+      }
+    }
+  </style>
+
+  <!-- Calendly Script -->
+  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+</head>
+<body>
+
+  <header>
+    <div class="container nav-wrapper">
+      <a href="#" class="brand-logo" aria-label="Kindly Home">
+        <div class="brand-logo-text">
+          k<span class="brand-logo-i"><span class="brand-logo-dot"></span>ı</span>ndly.
+        </div>
+        <div class="brand-logo-tagline">Outsource to AI-powered humans</div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#how-we-work">How We Work</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#team">Team</a></li>
+      </ul>
+
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <a href="#book" class="btn header-btn">Book a Call</a>
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu">☰</button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Tray -->
+    <div class="mobile-nav-drawer" id="mobileNavDrawer">
+      <ul>
+        <li><a href="#overview" onclick="toggleMobileMenu()">Overview</a></li>
+        <li><a href="#services" onclick="toggleMobileMenu()">Services</a></li>
+        <li><a href="#how-we-work" onclick="toggleMobileMenu()">How We Work</a></li>
+        <li><a href="#pricing" onclick="toggleMobileMenu()">Pricing</a></li>
+        <li><a href="#story" onclick="toggleMobileMenu()">Our Story</a></li>
+        <li><a href="#team" onclick="toggleMobileMenu()">Team</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- HERO (White Background) -->
+  <section class="bg-surface" style="padding-top: 40px; padding-bottom: 60px;">
+    <div class="container">
+      <div class="hero">
+        <div class="hero-origin-badge">
+          📍 Manila, Philippines · Founded by Social Enterprise Pioneers
+        </div>
+        
+        <h1>Outsource to AI-powered <em>humans.</em></h1>
+        
+        <p>Scale your data operations without adding internal management overhead. Dedicated pods for RLHF, data labeling, content moderation, and back-office BPO—managed directly in the Philippines.</p>
+        
+        <div class="hero-actions">
+          <a href="#book" class="btn">Book a 20-Minute Call</a>
+          <a href="#how-we-work" class="btn btn-secondary">How We Work</a>
+        </div>
+
+        <!-- Real Work Artifact Video Preview -->
+        <div class="artifact-card">
+          <div class="artifact-header">
+            <span>REAL WORK IN ACTION: MANILA OPERATIONS DEMO</span>
+            <span style="color: var(--color-primary-dark);">STATUS: LIVE WORKFLOW</span>
+          </div>
+          <div class="artifact-video-container">
+            <video autoplay loop muted playsinline poster="/images/video-poster.jpg">
+              <source src="work-demo.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OVERVIEW / THE SHIFT SECTION (Warm Off-White Background) -->
+  <section id="overview" class="bg-warm">
+    <div class="container">
+      
+      <!-- Highlight Banner Row -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; padding-bottom: 3.5rem; border-bottom: 1px solid var(--border-color); margin-bottom: 3.5rem;">
+        <div>
+          <p style="font-size: 0.95rem; color: var(--text-main); line-height: 1.5;">
+            Founded by the team behind <strong>Hapinoy</strong> and <strong>Rags2Riches</strong> — social enterprises that have worked with thousands of Filipino micro-entrepreneurs.
+          </p>
+        </div>
+        <div>
+          <p style="font-size: 0.95rem; color: var(--text-main); line-height: 1.5;">
+            <strong>15+ years</strong> building operations businesses across Southeast Asia.
+          </p>
+        </div>
+        <div>
+          <p style="font-size: 0.95rem; color: var(--text-main); line-height: 1.5;">
+            <strong>English-fluent, AI-fluent</strong> workforce with deep Western business familiarity.
+          </p>
+        </div>
+        <div>
+          <p style="font-size: 0.95rem; color: var(--text-main); line-height: 1.5;">
+            Every worker <strong>fairly paid</strong>, with portable government benefits on every output.
+          </p>
+        </div>
+      </div>
+
+      <!-- Section Header -->
+      <div class="section-header" style="max-width: 800px;">
+        <span style="font-size: 0.85rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary-dark); display: block; margin-bottom: 0.5rem;">THE SHIFT</span>
+        <h2>AI <em>broke</em> the old outsourcing model.</h2>
+      </div>
+
+      <!-- Dilemma Grid (01 & 02) -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+        
+        <!-- Card 01 -->
+        <div style="background: var(--bg-surface); border: 2px solid var(--border-color); border-radius: var(--radius); padding: 2rem;">
+          <div style="font-size: 2rem; font-weight: 900; color: var(--color-mustard); margin-bottom: 0.5rem; font-style: italic; font-family: var(--font-serif);">01</div>
+          <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--color-primary-dark); margin-bottom: 0.75rem;">The seat-seller's dilemma</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+            Traditional BPOs bill by the seat. Every workflow they automate is revenue they lose — so they don't. You keep paying for headcount that software should have replaced years ago.
+          </p>
+        </div>
+
+        <!-- Card 02 -->
+        <div style="background: var(--bg-surface); border: 2px solid var(--border-color); border-radius: var(--radius); padding: 2rem;">
+          <div style="font-size: 2rem; font-weight: 900; color: var(--color-mustard); margin-bottom: 0.5rem; font-style: italic; font-family: var(--font-serif);">02</div>
+          <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--color-primary-dark); margin-bottom: 0.75rem;">The automation trap</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+            Pure-AI vendors automate everything, then quality collapses on the work that needs judgment — edge cases, escalations, regulated reviews, brand voice. The errors reach your customers.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Solution Block -->
+      <div style="background: var(--bg-surface); border: 2px solid var(--color-primary-dark); border-radius: var(--radius); padding: 2.5rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; align-items: center;">
+          
+          <div>
+            <h3 style="font-size: 2rem; font-weight: 800; color: var(--color-primary-dark); line-height: 1.25; margin-bottom: 1rem;">
+              We're paid either way. <br><em style="font-style: italic; font-family: var(--font-serif); color: var(--color-mustard); font-weight: 400;">That changes everything.</em>
+            </h3>
+            <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6;">
+              Seat-billers profit when nothing changes. AI vendors profit when everything does. We assess every workflow on its merits and tell you the truth about it — because our business works whether the answer is software or people. Your operating cost goes down either way.
+            </p>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            
+            <div style="background: var(--bg-warm); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: 6px;">
+              <strong style="color: var(--color-primary-dark); font-size: 0.95rem;">Automate</strong>
+              <span style="color: var(--text-muted); font-size: 0.95rem;"> — what machines do best: repetitive, rule-based, high-volume work</span>
+            </div>
+
+            <div style="background: var(--bg-warm); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: 6px;">
+              <strong style="color: var(--color-primary-dark); font-size: 0.95rem;">Human-in-the-loop</strong>
+              <span style="color: var(--text-muted); font-size: 0.95rem;"> — where nuance, empathy, and accountability decide outcomes</span>
+            </div>
+
+            <div style="background: var(--bg-warm); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: 6px;">
+              <strong style="color: var(--color-primary-dark); font-size: 0.95rem;">One partner</strong>
+              <span style="color: var(--text-muted); font-size: 0.95rem;"> — accountable for the quality of both, with SLAs and live dashboards</span>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SERVICES (White Background) -->
+  <section id="services" class="bg-surface">
+    <div class="container">
+      <div class="section-header">
+        <h2>What We Handle for Your Team</h2>
+        <p>Dedicated managed operations pods tailored to your exact data standards and tools.</p>
+      </div>
+
+      <div class="service-grid">
+        <div class="service-card">
+          <h3>AI Data Operations</h3>
+          <p>The human layer behind good models. Trained specialists label, evaluate, and correct the data and outputs your AI depends on — with accuracy you can audit, at volumes you can scale.</p>
+          <ul class="bullet-list">
+            <li>Data labeling & annotation (text, image, audio, video)</li>
+            <li>RLHF and preference data collection</li>
+            <li>JSON structured dataset creation</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <h3>Managed Operations (BPO)</h3>
+          <p>Full-time embedded Manila specialists for recurring operational workflows.</p>
+          <ul class="bullet-list">
+            <li>Data encoding, validation & document processing</li>
+            <li>Chatbot Development</li>
+            <li>Brand safety & Content moderation</li>
+            <li>Customer support & back-office ticket handling</li>
+            <li>E-commerce catalog enrichment</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE WORK (White Surface Background) -->
+  <section id="how-we-work" class="bg-surface">
+    <div class="container">
+      <div class="section-header">
+        <span style="font-size: 0.85rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary-dark); display: block; margin-bottom: 0.5rem;">OUR OPERATIONAL ENGINE</span>
+        <h2>AI Acceleration, Human at Heart</h2>
+        <p>Built to be fast to act, easy to work with, and flexible behind the scenes.</p>
+      </div>
+
+      <!-- Moving Speed Benchmarks -->
+      <div class="speed-grid">
+        <div class="speed-card">
+          <h3>24h</h3>
+          <p>Response within 24 hours — a real conversation, not an automated sequence.</p>
+        </div>
+        <div class="speed-card">
+          <h3>48h</h3>
+          <p>Custom proposal in 48 hours — tailored scope, pricing, and SLA.</p>
+        </div>
+        <div class="speed-card">
+          <h3>2–3wk</h3>
+          <p>Team live in 2–3 weeks — recruited, trained, QA'd, and ready to deliver.</p>
+        </div>
+      </div>
+
+      <!-- Operational Pillars Grid -->
+      <div class="hww-grid">
+        <div class="hww-card">
+          <h3>Fast to Act & Ramp Up</h3>
+          <p>We eliminate BPO red tape. Need to deploy a pod or scale up fast? Our agile Manila pipeline allows us to onboard, train, and ramp up your team in 2 to 3 weeks.</p>
+        </div>
+
+        <div class="hww-card">
+          <h3>Multi-Layer QA Process</h3>
+          <p>Multi-tier quality assurance using gold-standard calibration datasets, real-time edge-case escalations, and double-blind audits that consistently catch 99.8% of errors.</p>
+        </div>
+
+        <div class="hww-card">
+          <h3>Flexible Engagement Model</h3>
+          <p>Pivot guidelines, scale capacity, or adjust scope as your product evolves. Adaptable structures whether you need full-time dedicated pods or unit-based outputs.</p>
+        </div>
+
+        <div class="hww-card">
+          <h3>Easy to Work With</h3>
+          <p>Direct communication with dedicated Manila leads aligned to your timezone. High-touch collaboration, transparent reporting, and zero friction.</p>
+        </div>
+
+        <div class="hww-card">
+          <h3>Native Stack Integration</h3>
+          <p>We work inside your preferred tools: Airtable, Chatfuel, GitHub, Google Workspace, Make, Slack, Streamlit, Vercel, or custom internal APIs—no platform locking or friction.</p>
+        </div>
+
+        <div class="hww-card">
+          <h3>Behind the Scenes Proof Points</h3>
+          <p>Complete data lineage logs, real-time QA dashboards, and weekly SLA audits providing full operational transparency at every step.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS & PRICING (Warm Off-White Background) -->
+  <section id="pricing" class="bg-warm">
+    <div class="container">
+      <div class="section-header">
+        <h2>Real SLAs From Our Operational Pods</h2>
+        <p>Tangible performance metrics from active client accounts.</p>
+      </div>
+
+      <!-- Updated 2-Column Metrics Grid -->
+      <div class="metrics-grid" style="grid-template-columns: repeat(2, 1fr); margin-bottom: 3.5rem;">
+        <div class="metric-box">
+          <h4>99.8%</h4>
+          <p>Double-blind auditing catches errors before output leaves Manila.</p>
+        </div>
+        <div class="metric-box">
+          <h4>2–3 Wks</h4>
+          <p>Average deployment time from kickoff to fully operational pod.</p>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <h2>No Minimum Seat Lock-Ins</h2>
+        <p>Pay only when a task passes QA, or deploy dedicated full-time pods.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div>
+            <h3>Per-Output Benchmarks</h3>
+            <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">Ideal for discrete data labeling, RLHF tasks, or variable volume projects. You pay strictly for audited, accepted records.</p>
+          </div>
+          <div class="pricing-price">From $0.05 / record</div>
+        </div>
+
+        <div class="pricing-card">
+          <div>
+            <h3>Dedicated Full-Time Pods</h3>
+            <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">Full-time managed Manila team members embedded directly into your tools (Slack, Labelbox, Zendesk).</p>
+          </div>
+          <div class="pricing-price">From $1,800 / month / seat</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- OUR STORY & IMPACT SECTION (White Surface Background) -->
+  <section id="story" class="bg-surface">
+    <div class="container">
+      
+      <!-- Section Header -->
+      <div class="section-header" style="max-width: 800px;">
+        <span style="font-size: 0.85rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary-dark); display: block; margin-bottom: 0.5rem;">
+          ROOTED IN IMPACT. DRIVEN BY INNOVATION.
+        </span>
+        <h2>Our Story &amp; <em>Impact</em></h2>
+      </div>
+
+      <!-- 3-Column Pillar Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+        
+        <!-- Card 1: Established Legacy -->
+        <div style="background: var(--bg-warm); border: 2px solid var(--border-color); border-radius: var(--radius); padding: 2rem;">
+          <h3 style="color: var(--color-primary-dark); font-size: 1.25rem; font-weight: 800; margin-bottom: 1rem;">
+            Established Legacy
+          </h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; font-weight: 400;">
+            Our roots run deep in local empowerment through <strong style="color: var(--text-main);">Hapinoy and Rags2Riches</strong>. We bring years of proven experience in driving community impact, economic development, and sustainable systems to the digital and AI landscape.
+          </p>
+        </div>
+
+        <!-- Card 2: Bridging Human & AI -->
+        <div style="background: var(--bg-warm); border: 2px solid var(--border-color); border-radius: var(--radius); padding: 2rem;">
+          <h3 style="color: var(--color-primary-dark); font-size: 1.25rem; font-weight: 800; margin-bottom: 1rem;">
+            Bridging Human &amp; AI
+          </h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; font-weight: 400;">
+            We believe technology shouldn't displace people—it should unleash their potential. We combine smart automation with a skilled, dedicated workforce to handle high-stakes data workflows, AI QA, and custom implementations.
+          </p>
+        </div>
+
+        <!-- Card 3: Dignified Digital Work -->
+        <div style="background: var(--bg-warm); border: 2px solid var(--border-color); border-radius: var(--radius); padding: 2rem;">
+          <h3 style="color: var(--color-primary-dark); font-size: 1.25rem; font-weight: 800; margin-bottom: 1rem;">
+            Dignified Digital Work
+          </h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; font-weight: 400;">
+            Through our hybrid model—combining core in-house specialists with scalable output-based talent—we deliver precision to businesses while providing dignified, high-value opportunities to our communities.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Quote Banner -->
+      <div style="border: 2px dashed var(--color-mustard); border-radius: var(--radius); padding: 1.5rem 2rem; text-align: center; background: var(--bg-warm); margin-bottom: 2.5rem;">
+        <p style="color: var(--color-primary-dark); font-family: var(--font-serif); font-style: italic; font-size: 1.25rem; margin: 0; font-weight: 400;">
+          "Combining deep-rooted community impact with enterprise-grade digital execution."
+        </p>
+      </div>
+
+      <!-- Founder & Leadership Quotes Integrated Under Story -->
+      <div class="story-quotes-grid">
+        <div class="story-quote-card">
+          <p class="story-quote-text">"Sample"</p>
+          <div class="story-quote-author">
+            <img src="/images/mark.jpg" alt="Mark Ruiz" class="story-quote-avatar">
+            <div class="story-quote-info">
+              <h4>Mark Ruiz</h4>
+              <p>Co-Founder, Kindly &amp; Hapinoy</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-quote-card">
+          <p class="story-quote-text">"Sample"</p>
+          <div class="story-quote-author">
+            <img src="/images/reese.jpg" alt="Reese Fernandez-Ruiz" class="story-quote-avatar">
+            <div class="story-quote-info">
+              <h4>Reese Fernandez-Ruiz</h4>
+              <p>Co-Founder, Kindly &amp; Rags2Riches</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-quote-card">
+          <p class="story-quote-text">"Sample."</p>
+          <div class="story-quote-author">
+            <img src="/images/client.jpg" alt="AI Operations Partner" class="story-quote-avatar">
+            <div class="story-quote-info">
+              <h4>Manny de Luna</h4>
+              <p>Partner - Founder of ActivAsia</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TEAM (Warm Off-White Background) -->
+  <section id="team" class="bg-warm">
+    <div class="container">
+      <div class="section-header" style="max-width: 800px;">
+        <h2>Human-in-the-Loop: <em>Meet the people who'd run your account.</em></h2>
+        <p>Not stock photos. Not an offshore black box. These are the named people accountable for your work — and you'll talk to them, not an account manager.</p>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card">
+          <img src="/images/macar.jpg" alt="Macar" class="team-avatar">
+          <h4>Macar</h4>
+          <div class="role">Head of Operations</div>
+          <div class="desc">Owns delivery against every SLA you sign.</div>
+        </div>
+
+        <div class="team-card">
+          <img src="/images/jeh.jpg" alt="Jeh" class="team-avatar">
+          <h4>Jeh</h4>
+          <div class="role">Operations Manager</div>
+          <div class="desc">Your weekly quality report comes from her desk.</div>
+        </div>
+
+        <div class="team-card">
+          <img src="/images/mico.jpg" alt="Mico" class="team-avatar">
+          <h4>Mico</h4>
+          <div class="role">Data Operations Lead</div>
+          <div class="desc">Designs the workflow before a single record moves.</div>
+        </div>
+
+        <div class="team-card">
+          <img src="/images/fred.jpg" alt="Fred" class="team-avatar">
+          <h4>Fred</h4>
+          <div class="role">Systems Development</div>
+          <div class="desc">Builds the integrations that connect us to your stack.</div>
+        </div>
+
+        <div class="team-card">
+          <img src="/images/allan.jpg" alt="Allan" class="team-avatar">
+          <h4>Allan</h4>
+          <div class="role">Database & Admin</div>
+          <div class="desc">Keeps your data pipelines clean and auditable.</div>
+        </div>
+
+        <div class="team-card">
+          <img src="/images/riza.jpg" alt="Riza" class="team-avatar">
+          <h4>Riza</h4>
+          <div class="role">Team Leader</div>
+          <div class="desc">Every batch is reviewed before it reaches you.</div>
+        </div>
+
+        <div class="team-card">
+          <img src="/images/aira.jpg" alt="Aira" class="team-avatar">
+          <h4>Aira</h4>
+          <div class="role">Data Auditor</div>
+          <div class="desc">Runs the audits that catch what the first pass missed.</div>
+        </div>
+
+        <div class="team-card">
+          <img src="/images/tin.jpg" alt="Tin" class="team-avatar">
+          <h4>Tin</h4>
+          <div class="role">Systems & Data</div>
+          <div class="desc">Maintains dataset integrity and schema mapping.</div>
+        </div>
+
+        <div class="team-card">
+          <img src="/images/grace.jpg" alt="Grace" class="team-avatar">
+          <h4>Grace</h4>
+          <div class="role">Onboarding</div>
+          <div class="desc">Gets your team live inside three weeks.</div>
+        </div>
+
+        <div class="team-card">
+          <img src="/images/chris.jpg" alt="Chris" class="team-avatar">
+          <h4>Chris</h4>
+          <div class="role">Data Admin</div>
+          <div class="desc">Handles the encoding volume nobody else wants to.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries Served -->
+  <section class="industries-section">
+    <div class="section-title" style="margin-bottom: 0;">
+      <h2>Industries We Serve</h2>
+      <p>WHERE ACCURATE DATA & AI CREATE COMPETITIVE ADVANTAGE</p>
+    </div>
+    <div class="industry-badges">
+      <span class="badge">FMCG</span>
+      <span class="badge">Fintech & KYC</span>
+      <span class="badge">E-commerce</span>
+      <span class="badge">Market Research</span>
+      <span class="badge">Healthcare</span>
+      <span class="badge">Logistics</span>
+    </div>
+  </section>
+
+  <!-- Dynamic Quick AI Audit Section (White Surface Background) -->
+  <section id="quiz" class="quiz-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Quick Automation Audit</h2>
+        <p>DIAGNOSE YOUR HIGHEST-IMPACT AUTOMATION PATH</p>
+      </div>
+
+      <div class="quiz-container">
+        <div class="quiz-progress">
+          <div class="quiz-progress-bar" id="quizBar"></div>
+        </div>
+
+        <!-- Question 1 -->
+        <div class="quiz-step active" id="quizStep1">
+          <h4>1. Where does your primary operational bottleneck lie?</h4>
+          <div class="quiz-options">
+            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'data')">Manual Data Entry & Verification</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'support')">Customer Support & Ticket Inquiries</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'workflows')">Repetitive Internal Workflows</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'literacy')">Low AI Literacy Across Staff</button>
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="quiz-step" id="quizStep2">
+          <h4>2. What is your primary tool stack environment?</h4>
+          <div class="quiz-options">
+            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'sheets')">Google Workspace & Spreadsheets</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'crm')">CRMs & Helpdesks (Zendesk, HubSpot)</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'db')">Custom Databases & Internal Software</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'unstructured')">Unstructured Emails, Docs & PDFs</button>
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="quiz-step" id="quizStep3">
+          <h4>3. How large is the team handling this workload?</h4>
+          <div class="quiz-options">
+            <button class="quiz-option-btn" onclick="selectQuizOption(3, 'small')">1 – 5 team members</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(3, 'mid')">6 – 20 team members</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(3, 'large')">21 – 50 team members</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(3, 'enterprise')">50+ enterprise staff</button>
+          </div>
+        </div>
+
+        <!-- Dynamic Audit Result Card -->
+        <div class="quiz-step" id="quizResult">
+          <div class="quiz-result-card">
+            <h4 id="auditRecommendation">Analyzing operational profile...</h4>
+            
+            <div class="audit-stats-grid">
+              <div class="audit-stat-box">
+                <div class="stat-val" id="statTimeSaved">0%</div>
+                <div class="stat-lbl">Est. Cost/Time Reduction</div>
+              </div>
+              <div class="audit-stat-box">
+                <div class="stat-val" id="statAccuracy">0%</div>
+                <div class="stat-lbl">Target SLA Quality</div>
+              </div>
+              <div class="audit-stat-box">
+                <div class="stat-val" id="statTimeline">0 Wks</div>
+                <div class="stat-lbl">Deployment Speed</div>
+              </div>
+            </div>
+
+            <p id="auditDetails">Loading calculation...</p>
+
+            <ul class="audit-bullets" id="auditActionItems">
+              <!-- Dynamically populated -->
+            </ul>
+
+            <div style="text-align: center;">
+              <a href="#book" class="btn">Book a 20-Minute Call for This Solution</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOK A CALL (Warm Off-White Background) -->
+  <section id="book" class="bg-warm">
+    <div class="container">
+      <div class="section-header">
+        <h2>Book a 20-Minute Call</h2>
+        <p>Talk directly with our leadership team about your operational bottlenecks.</p>
+      </div>
+
+      <div style="background: var(--bg-surface); border: 2px solid var(--border-color); border-radius: var(--radius); padding: 1rem; min-height: 500px;">
+        <div class="calendly-inline-widget" data-url="https://calendly.com/jeh-hapinoy/1?hide_landing_page_details=1&hide_gdpr_banner=1" style="min-width:320px;height:500px;"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p><a href="mailto:hello@kindly.global" style="color: var(--color-primary-dark); text-decoration: none; font-weight: 700;">hello@kindly.global</a> · Manila, Philippines</p>
+      <p style="margin-top: 0.5rem;">A business under Atindata · Atin Group &copy; 2026 Kindly. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobileNavDrawer');
+      drawer.classList.toggle('open');
+    }
+
+    const auditData = { 1: null, 2: null, 3: null };
+
+    function selectQuizOption(step, value) {
+      auditData[step] = value;
+      
+      const currentStepEl = document.getElementById(`quizStep${step}`);
+      currentStepEl.classList.remove('active');
+      
+      if (step < 3) {
+        const nextStepEl = document.getElementById(`quizStep${step + 1}`);
+        nextStepEl.classList.add('active');
+        document.getElementById('quizBar').style.width = `${((step + 1) / 3) * 100}%`;
+      } else {
+        showAuditResults();
+      }
+    }
+
+    function animateValue(id, start, end, duration, suffix = "") {
+      const obj = document.getElementById(id);
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const currentVal = (progress * (end - start) + start).toFixed(1);
+        obj.innerHTML = (currentVal % 1 === 0 ? parseInt(currentVal) : currentVal) + suffix;
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
+
+    function showAuditResults() {
+      const resultStep = document.getElementById('quizResult');
+      resultStep.classList.add('active');
+      document.getElementById('quizBar').style.width = '100%';
+
+      const b = auditData[1];
+      const s = auditData[3];
+
+      let title = "Recommended Setup: Dedicated Managed Manila Pod";
+      let targetTimeSaved = 35;
+      let targetAccuracy = 99.8;
+      let targetTimeline = 2;
+      let details = "Based on your inputs, your operations will benefit most from a hybrid approach—pairing direct automation triggers with a human-in-the-loop Manila QA pod.";
+      let actions = [
+        "Deploy dedicated Manila specialists trained in your tool stack",
+        "Implement double-blind QA checks to maintain high SLA precision",
+        "Establish automated escalation pathways for edge cases"
+      ];
+
+      if (b === 'data') {
+        title = "Recommended Setup: Per-Output Data Processing Pod";
+        targetTimeSaved = 45;
+        targetAccuracy = 99.9;
+        targetTimeline = 1;
+        details = "Your primary bottleneck is manual data handling. An automated extraction pipeline combined with human QA validation will eliminate repetitive overhead instantly.";
+        actions = [
+          "Deploy structured OCR & LLM extraction schemas",
+          "Human double-blind verification for error-free datasets",
+          "API sync directly into your database or warehouse"
+        ];
+      } else if (b === 'support') {
+        title = "Recommended Setup: AI Support & Escalation Pod";
+        targetTimeSaved = 40;
+        targetAccuracy = 99.5;
+        targetTimeline = 2;
+        details = "For support workflows, combining instant AI ticket parsing with specialized Manila agents yields maximum response speed without sacrificing brand tone.";
+        actions = [
+          "Set up automated triage and first-pass AI draft responses",
+          "Deploy human agents in Manila for nuanced edge cases and escalations",
+          "Full CRM integration (Zendesk, Salesforce, HubSpot)"
+        ];
+      } else if (b === 'literacy') {
+        targetTimeSaved = 30;
+        targetAccuracy = 99.0;
+        targetTimeline = 3;
+      }
+
+      if (s === 'large' || s === 'enterprise') {
+        targetTimeSaved += 10;
+      }
+
+      document.getElementById('auditRecommendation').innerText = title;
+      document.getElementById('auditDetails').innerText = details;
+
+      // Dynamic animation trigger
+      animateValue("statTimeSaved", 0, targetTimeSaved, 1000, "% Cost Reduction");
+      animateValue("statAccuracy", 90.0, targetAccuracy, 1000, "%");
+      animateValue("statTimeline", 0, targetTimeline, 800, " Wks Deployment");
+
+      const actionsList = document.getElementById('auditActionItems');
+      actionsList.innerHTML = '';
+      actions.forEach(item => {
+        const li = document.createElement('li');
+        li.innerText = item;
+        actionsList.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>
