@@ -111,14 +111,14 @@
 
     .container { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
 
-    /* Solid Mustard Header */
+    /* White Header */
     header {
-      background: var(--color-mustard);
-      border-bottom: 2px solid var(--color-mustard-hover);
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border-color);
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 4px 12px rgba(8, 80, 65, 0.08);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
     .nav-wrapper {
       display: flex;
@@ -127,46 +127,16 @@
       height: 90px;
     }
     
-    /* Logo styling */
+    /* Image Logo Styling */
     .brand-logo {
       display: inline-flex;
-      flex-direction: column;
+      align-items: center;
       text-decoration: none;
-      color: #000000;
-      user-select: none;
     }
-    .brand-logo-text {
-     font-family: 'Inter', -apple-system, sans-serif;
-     font-weight: 800;
-     font-size: 3.4rem;
-     line-height: 0.85;
-     letter-spacing: -0.02em; /* Negative spacing pulls k and i together */
-     color: #000000;
-     display: flex;
-     align-items: baseline;
-    }
-    .brand-logo-i {
-      position: relative;
-      display: inline-block;
-    }
-    .brand-logo-dot {
-      position: absolute;
-      top: -0.08em; 
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0.28em;
-      height: 0.28em;
-      background-color: var(--color-primary-green);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-    .brand-logo-tagline {
-      font-family: 'Inter', sans-serif;
-      font-weight: 700;
-      font-size: 0.88rem;
-      color: #000000;
-      margin-top: 0.35rem;
-      letter-spacing: -0.01em;
+    .brand-logo-img {
+      height: 48px;
+      width: auto;
+      display: block;
     }
 
     /* Header Nav Links */
@@ -178,13 +148,13 @@
       font-weight: 700;
       transition: color 0.2s ease;
     }
-    .nav-links a:hover { color: #FFFFFF; }
+    .nav-links a:hover { color: var(--color-mustard); }
 
-    /* Header CTA Button Contrast */
+    /* Header CTA Button - Mustard High-Converting Call-to-Action */
     .header-btn {
-      background: var(--color-primary-dark);
+      background: var(--color-mustard);
       color: #FFFFFF;
-      border: 2px solid var(--color-primary-dark);
+      border: 2px solid var(--color-mustard);
       padding: 0.75rem 1.5rem;
       border-radius: var(--radius);
       text-decoration: none;
@@ -195,8 +165,8 @@
       white-space: nowrap;
     }
     .header-btn:hover {
-      background: #000000;
-      border-color: #000000;
+      background: var(--color-mustard-hover);
+      border-color: var(--color-mustard-hover);
       color: #FFFFFF;
       transform: translateY(-1px);
     }
@@ -215,8 +185,8 @@
     /* Mobile Nav Drawer Container */
     .mobile-nav-drawer {
       display: none;
-      background: var(--color-mustard);
-      border-bottom: 2px solid var(--color-mustard-hover);
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border-color);
       padding: 1rem 1.5rem;
     }
     .mobile-nav-drawer.open {
@@ -236,7 +206,7 @@
       display: block;
     }
     .mobile-nav-drawer a:hover {
-      color: #FFFFFF;
+      color: var(--color-mustard);
     }
 
     /* Primary Buttons - Predominant Mustard Styling for Body */
@@ -245,7 +215,7 @@
       align-items: center;
       justify-content: center;
       background: var(--color-mustard);
-      color: var(--color-primary-dark);
+      color: #FFFFFF;
       padding: 0.75rem 1.5rem;
       border-radius: var(--radius);
       text-decoration: none;
@@ -766,12 +736,8 @@
       .nav-wrapper {
         height: 70px;
       }
-      .brand-logo-text {
-        font-size: 2.1rem;
-      }
-      .brand-logo-tagline {
-        font-size: 0.72rem;
-        margin-top: 0.15rem;
+      .brand-logo-img {
+        height: 38px;
       }
       .nav-links { display: none; }
       .mobile-menu-toggle { display: block; }
@@ -799,10 +765,7 @@
   <header>
     <div class="container nav-wrapper">
       <a href="#" class="brand-logo" aria-label="Kindly Home">
-        <div class="brand-logo-text">
-          k<span class="brand-logo-i"><span class="brand-logo-dot"></span>ı</span>ndly.
-        </div>
-        <div class="brand-logo-tagline">Outsource to AI-powered humans</div>
+        <img src="kindly-logo.svg" alt="Kindly Logo" class="brand-logo-img">
       </a>
 
       <ul class="nav-links">
