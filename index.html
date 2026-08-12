@@ -77,27 +77,27 @@
   <style>
     :root {
       /* Brand Color Palette */
-     --color-mustard: #EE9B27;        /* Exact sampled color from image */
-     --color-accent-amber: #EE9B27;   /* Re-mapped to update all existing amber references */
-     --color-primary-dark: #085041;   /* Dark Emerald/Forest Green */
-     --color-primary-green: #1D9E75;  /* Vibrant Emerald Green */
-     --color-charcoal: #2C2C2A;       /* Off-Black / Charcoal Text */
+      --color-mustard: #EE9B27;        /* Predominant Brand Mustard */
+      --color-mustard-hover: #D98818;  /* Slightly darker mustard for hover states */
+      --color-primary-dark: #085041;   /* Dark Forest Green for text/anchors */
+      --color-primary-green: #1D9E75;  /* Vibrant Emerald Green accent */
+      --color-charcoal: #2C2C2A;       /* Off-Black Text */
 
       /* Surface & UI Colors */
       --bg-surface: #FFFFFF;
-      --bg-warm: #FCF8F2;              /* Warm off-white background tint derived from #EE9B27 */
-      --bg-subtle: #F6EDE0;            /* Soft warm subtle background */
-      --border-color: #EADBCB;          /* Soft border color complement */
-  
+      --bg-warm: #FFFBF2;              /* Soft mustard-tinted background */
+      --bg-subtle: #F8EEDC;            /* Deeper warm tint for containers */
+      --border-color: #EADBCB;
+      
       --text-main: #2C2C2A;
       --text-muted: #58605C;
-      --badge-bg: #FDF4E7;             /* Soft mustard badge background */
+      --badge-bg: #FDF3E3;             /* Warm mustard tint for badges */
       --radius: 8px;
       
-      /* Updated Primary Font Family */
-     --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-     --font-serif: 'Instrument Serif', Georgia, serif;
-   }
+      /* Primary Font Family */
+      --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-serif: 'Instrument Serif', Georgia, serif;
+    }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -128,7 +128,7 @@
       height: 90px;
     }
     
-    /* Logo styling updated to Inter & green dot position */
+    /* Logo styling */
     .brand-logo {
       display: inline-flex;
       flex-direction: column;
@@ -215,35 +215,36 @@
       display: block;
     }
 
-    /* Buttons */
+    /* Primary Buttons - Predominant Mustard Styling */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: var(--color-primary-dark);
-      color: #FFFFFF;
+      background: var(--color-mustard);
+      color: var(--color-primary-dark);
       padding: 0.75rem 1.5rem;
       border-radius: var(--radius);
       text-decoration: none;
-      font-weight: 700;
+      font-weight: 800;
       font-size: 0.95rem;
-      border: 2px solid var(--color-primary-dark);
+      border: 2px solid var(--color-mustard);
       transition: all 0.2s ease;
       cursor: pointer;
       white-space: nowrap;
     }
     .btn:hover { 
-      background: var(--color-primary-green);
-      border-color: var(--color-primary-green);
+      background: var(--color-mustard-hover);
+      border-color: var(--color-mustard-hover);
+      color: #FFFFFF;
     }
     .btn-secondary {
       background: var(--bg-surface);
-      color: var(--text-main);
-      border: 2px solid var(--border-color);
+      color: var(--color-primary-dark);
+      border: 2px solid var(--color-mustard);
     }
     .btn-secondary:hover { 
       background: var(--bg-warm);
-      border-color: var(--color-primary-dark);
+      border-color: var(--color-mustard-hover);
     }
 
     /* Section Structure & Header Scroll Margins */
@@ -277,7 +278,7 @@
       font-family: var(--font-serif);
       font-style: italic;
       font-weight: 400;
-      color: var(--color-primary-green);
+      color: var(--color-mustard);
     }
     .section-header p { color: var(--text-muted); font-size: 1.1rem; font-weight: 500; }
 
@@ -291,12 +292,12 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: var(--bg-warm);
+      background: var(--badge-bg);
       border: 1px solid var(--border-color);
       padding: 0.45rem 1rem;
       border-radius: 20px;
       font-size: 0.88rem;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--color-primary-dark);
       margin-bottom: 1.5rem;
     }
@@ -312,7 +313,7 @@
       font-style: italic;
       font-family: var(--font-serif);
       font-weight: 400;
-      color: var(--color-primary-green);
+      color: var(--color-mustard);
     }
     .hero p {
       font-size: 1.25rem;
@@ -330,7 +331,7 @@
       border-radius: var(--radius);
       padding: 1.5rem;
       margin-top: 2rem;
-      box-shadow: 0 6px 16px rgba(8, 80, 65, 0.05);
+      box-shadow: 0 6px 16px rgba(238, 155, 39, 0.08);
     }
     .artifact-header {
       display: flex;
@@ -376,7 +377,7 @@
       align-items: center;
       gap: 0.4rem;
       background-color: var(--badge-bg);
-      border: 1px solid rgba(29, 158, 117, 0.3);
+      border: 1px solid var(--color-mustard);
       padding: 0.35rem 0.85rem;
       border-radius: 20px;
       font-size: 0.875rem;
@@ -384,7 +385,7 @@
       color: var(--color-primary-dark);
     }
     .compliance-badge .check-icon {
-      color: var(--color-primary-green);
+      color: var(--color-mustard);
       font-weight: 900;
     }
 
@@ -416,7 +417,7 @@
       content: "—";
       position: absolute;
       left: 0;
-      color: var(--color-primary-green);
+      color: var(--color-mustard);
       font-weight: 800;
     }
 
@@ -437,7 +438,7 @@
     .speed-card h3 {
       font-size: 3rem;
       font-weight: 900;
-      color: var(--color-accent-amber);
+      color: var(--color-mustard);
       line-height: 1;
       margin-bottom: 0.75rem;
     }
@@ -484,7 +485,7 @@
     }
     .metric-box h4 {
       font-size: 2.5rem;
-      color: var(--color-accent-amber);
+      color: var(--color-mustard);
       font-weight: 900;
       margin-bottom: 0.25rem;
     }
@@ -544,7 +545,7 @@
       height: 46px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid var(--color-primary-green);
+      border: 2px solid var(--color-mustard);
     }
     .story-quote-info h4 {
       font-size: 0.95rem;
@@ -553,7 +554,7 @@
     }
     .story-quote-info p {
       font-size: 0.8rem;
-      color: var(--color-primary-green);
+      color: var(--color-mustard);
       font-weight: 700;
     }
 
@@ -579,11 +580,11 @@
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 1rem;
-      border: 2px solid var(--color-primary-green);
-      box-shadow: 0 0 0 3px rgba(29, 158, 117, 0.15);
+      border: 2px solid var(--color-mustard);
+      box-shadow: 0 0 0 3px rgba(238, 155, 39, 0.15);
     }
     .team-card h4 { font-size: 1.1rem; font-weight: 800; color: var(--text-main); }
-    .team-card .role { font-size: 0.85rem; color: var(--color-primary-green); margin-bottom: 0.75rem; font-weight: 700; }
+    .team-card .role { font-size: 0.85rem; color: var(--color-primary-dark); margin-bottom: 0.75rem; font-weight: 700; }
     .team-card .desc { font-size: 0.825rem; color: var(--text-muted); line-height: 1.4; margin-top: auto; }
 
     .industries-section {
@@ -601,7 +602,7 @@
     .industry-badges .badge {
       background-color: var(--badge-bg);
       color: var(--color-primary-dark);
-      border: 1px solid rgba(29, 158, 117, 0.3);
+      border: 1px solid var(--color-mustard);
       padding: 0.5rem 1rem;
       border-radius: 20px;
       font-size: 0.9rem;
@@ -633,7 +634,7 @@
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--color-primary-green);
+      color: var(--color-mustard);
     }
     .quiz-container {
       max-width: 760px;
@@ -642,7 +643,7 @@
       border: 2px solid var(--border-color);
       border-radius: var(--radius);
       padding: 2.5rem;
-      box-shadow: 0 6px 16px rgba(8, 80, 65, 0.05);
+      box-shadow: 0 6px 16px rgba(238, 155, 39, 0.08);
     }
     .quiz-progress {
       width: 100%;
@@ -655,7 +656,7 @@
     .quiz-progress-bar {
       width: 33.33%;
       height: 100%;
-      background: var(--color-primary-green);
+      background: var(--color-mustard);
       transition: width 0.3s ease;
     }
     .quiz-step {
@@ -689,7 +690,7 @@
       font-family: var(--font-main);
     }
     .quiz-option-btn:hover {
-      border-color: var(--color-primary-dark);
+      border-color: var(--color-mustard);
       background: var(--bg-warm);
       color: var(--color-primary-dark);
     }
@@ -716,7 +717,7 @@
     .stat-val {
       font-size: 1.8rem;
       font-weight: 900;
-      color: var(--color-accent-amber);
+      color: var(--color-mustard);
       line-height: 1.1;
       margin-bottom: 0.35rem;
       transition: all 0.2s ease-in-out;
@@ -751,7 +752,7 @@
       content: "✓";
       position: absolute;
       left: 0;
-      color: var(--color-primary-green);
+      color: var(--color-mustard);
       font-weight: 900;
     }
 
@@ -795,7 +796,7 @@
         scroll-margin-top: 70px; 
       }
     }
-  </style>
+</style>
 
   <!-- Calendly Script -->
   <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
