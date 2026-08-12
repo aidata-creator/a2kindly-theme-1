@@ -70,9 +70,9 @@
   </script>
 
   <!-- Typography: Inter & Instrument Serif -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -111,15 +111,14 @@
 
     .container { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
 
-    /* Sticky Nav Header */
+    /* Solid Mustard Header */
     header {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border-color);
+      background: var(--color-mustard);
+      border-bottom: 2px solid var(--color-mustard-hover);
       position: sticky;
       top: 0;
       z-index: 100;
+      box-shadow: 0 4px 12px rgba(8, 80, 65, 0.08);
     }
     .nav-wrapper {
       display: flex;
@@ -170,15 +169,37 @@
       letter-spacing: -0.01em;
     }
 
+    /* Header Nav Links */
     .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
     .nav-links a {
-      color: var(--text-muted);
+      color: var(--color-primary-dark);
       text-decoration: none;
       font-size: 0.95rem;
-      font-weight: 600;
-      transition: color 0.2s;
+      font-weight: 700;
+      transition: color 0.2s ease;
     }
-    .nav-links a:hover { color: var(--color-primary-dark); }
+    .nav-links a:hover { color: #FFFFFF; }
+
+    /* Header CTA Button Contrast */
+    .header-btn {
+      background: var(--color-primary-dark);
+      color: #FFFFFF;
+      border: 2px solid var(--color-primary-dark);
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .header-btn:hover {
+      background: #000000;
+      border-color: #000000;
+      color: #FFFFFF;
+      transform: translateY(-1px);
+    }
 
     /* Mobile Menu Toggle Button */
     .mobile-menu-toggle {
@@ -194,8 +215,8 @@
     /* Mobile Nav Drawer Container */
     .mobile-nav-drawer {
       display: none;
-      background: var(--bg-surface);
-      border-bottom: 1px solid var(--border-color);
+      background: var(--color-mustard);
+      border-bottom: 2px solid var(--color-mustard-hover);
       padding: 1rem 1.5rem;
     }
     .mobile-nav-drawer.open {
@@ -208,14 +229,17 @@
       gap: 1rem;
     }
     .mobile-nav-drawer a {
-      color: var(--text-main);
+      color: var(--color-primary-dark);
       text-decoration: none;
       font-weight: 700;
       font-size: 1.05rem;
       display: block;
     }
+    .mobile-nav-drawer a:hover {
+      color: #FFFFFF;
+    }
 
-    /* Primary Buttons - Predominant Mustard Styling */
+    /* Primary Buttons - Predominant Mustard Styling for Body */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -356,37 +380,6 @@
       height: 100%;
       object-fit: cover;
       display: block;
-    }
-
-    /* Trust & Accessibility Badges */
-    .trust-bar {
-      display: flex;
-      gap: 1.5rem;
-      padding: 1.5rem 0;
-      border-top: 1px solid var(--border-color);
-      border-bottom: 1px solid var(--border-color);
-      margin-top: 3rem;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .trust-item { font-size: 0.9rem; color: var(--text-muted); }
-    .trust-item strong { color: var(--text-main); font-weight: 700; }
-
-    .compliance-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background-color: var(--badge-bg);
-      border: 1px solid var(--color-mustard);
-      padding: 0.35rem 0.85rem;
-      border-radius: 20px;
-      font-size: 0.875rem;
-      font-weight: 700;
-      color: var(--color-primary-dark);
-    }
-    .compliance-badge .check-icon {
-      color: var(--color-mustard);
-      font-weight: 900;
     }
 
     /* Service Cards */
@@ -796,7 +789,7 @@
         scroll-margin-top: 70px; 
       }
     }
-</style>
+  </style>
 
   <!-- Calendly Script -->
   <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
@@ -806,11 +799,11 @@
   <header>
     <div class="container nav-wrapper">
       <a href="#" class="brand-logo" aria-label="Kindly Home">
-  <div class="brand-logo-text">
-    k<span class="brand-logo-i"><span class="brand-logo-dot"></span>ı</span>ndly.
-  </div>
-  <div class="brand-logo-tagline">Outsource to AI-powered humans</div>
-</a>
+        <div class="brand-logo-text">
+          k<span class="brand-logo-i"><span class="brand-logo-dot"></span>ı</span>ndly.
+        </div>
+        <div class="brand-logo-tagline">Outsource to AI-powered humans</div>
+      </a>
 
       <ul class="nav-links">
         <li><a href="#overview">Overview</a></li>
@@ -822,7 +815,7 @@
       </ul>
 
       <div style="display: flex; align-items: center; gap: 0.75rem;">
-        <a href="#book" class="btn header-btn">Book a Call</a>
+        <a href="#book" class="header-btn">Book a Call</a>
         <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu">☰</button>
       </div>
     </div>
@@ -913,7 +906,7 @@
         
         <!-- Card 01 -->
         <div style="background: var(--bg-surface); border: 2px solid var(--border-color); border-radius: var(--radius); padding: 2rem;">
-          <div style="font-size: 2rem; font-weight: 900; color: var(--color-accent-amber); margin-bottom: 0.5rem; font-style: italic; font-family: var(--font-serif);">01</div>
+          <div style="font-size: 2rem; font-weight: 900; color: var(--color-mustard); margin-bottom: 0.5rem; font-style: italic; font-family: var(--font-serif);">01</div>
           <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--color-primary-dark); margin-bottom: 0.75rem;">The seat-seller's dilemma</h3>
           <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
             Traditional BPOs bill by the seat. Every workflow they automate is revenue they lose — so they don't. You keep paying for headcount that software should have replaced years ago.
@@ -922,7 +915,7 @@
 
         <!-- Card 02 -->
         <div style="background: var(--bg-surface); border: 2px solid var(--border-color); border-radius: var(--radius); padding: 2rem;">
-          <div style="font-size: 2rem; font-weight: 900; color: var(--color-accent-amber); margin-bottom: 0.5rem; font-style: italic; font-family: var(--font-serif);">02</div>
+          <div style="font-size: 2rem; font-weight: 900; color: var(--color-mustard); margin-bottom: 0.5rem; font-style: italic; font-family: var(--font-serif);">02</div>
           <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--color-primary-dark); margin-bottom: 0.75rem;">The automation trap</h3>
           <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
             Pure-AI vendors automate everything, then quality collapses on the work that needs judgment — edge cases, escalations, regulated reviews, brand voice. The errors reach your customers.
@@ -1156,7 +1149,7 @@
       </div>
 
       <!-- Quote Banner -->
-      <div style="border: 2px dashed var(--color-accent-amber); border-radius: var(--radius); padding: 1.5rem 2rem; text-align: center; background: var(--bg-warm); margin-bottom: 2.5rem;">
+      <div style="border: 2px dashed var(--color-mustard); border-radius: var(--radius); padding: 1.5rem 2rem; text-align: center; background: var(--bg-warm); margin-bottom: 2.5rem;">
         <p style="color: var(--color-primary-dark); font-family: var(--font-serif); font-style: italic; font-size: 1.25rem; margin: 0; font-weight: 400;">
           "Combining deep-rooted community impact with enterprise-grade digital execution."
         </p>
