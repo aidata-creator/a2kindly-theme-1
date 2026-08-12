@@ -77,26 +77,27 @@
   <style>
     :root {
       /* Brand Color Palette */
-      --color-mustard: #EF9F27;        /* Predominant Warm Gold/Mustard */
-      --color-primary-dark: #085041;   /* Dark Emerald/Forest Green */
-      --color-primary-green: #1D9E75;  /* Vibrant Emerald Green */
-      --color-charcoal: #2C2C2A;       /* Off-Black / Charcoal Text */
+     --color-mustard: #EE9B27;        /* Exact sampled color from image */
+     --color-accent-amber: #EE9B27;   /* Re-mapped to update all existing amber references */
+     --color-primary-dark: #085041;   /* Dark Emerald/Forest Green */
+     --color-primary-green: #1D9E75;  /* Vibrant Emerald Green */
+     --color-charcoal: #2C2C2A;       /* Off-Black / Charcoal Text */
 
       /* Surface & UI Colors */
       --bg-surface: #FFFFFF;
-      --bg-warm: #FFFBF5;              /* Subtle warm background tint matching mustard */
-      --bg-subtle: #F3ECE1;
-      --border-color: #E2D8C8;
-      
+      --bg-warm: #FCF8F2;              /* Warm off-white background tint derived from #EE9B27 */
+      --bg-subtle: #F6EDE0;            /* Soft warm subtle background */
+      --border-color: #EADBCB;          /* Soft border color complement */
+  
       --text-main: #2C2C2A;
       --text-muted: #58605C;
-      --badge-bg: #FDF3E3;             /* Warm mustard tint for badges */
+      --badge-bg: #FDF4E7;             /* Soft mustard badge background */
       --radius: 8px;
       
       /* Updated Primary Font Family */
-      --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-serif: 'Instrument Serif', Georgia, serif;
-    }
+     --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+     --font-serif: 'Instrument Serif', Georgia, serif;
+   }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
